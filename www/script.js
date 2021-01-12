@@ -296,6 +296,7 @@ nextButton.addEventListener('click', function () {
             }
 
             deleteCardsAll([columns.notimportant]);
+            updateTotal([columns.essential], columns.totalTextBox);
             break;
         case 3:
 
