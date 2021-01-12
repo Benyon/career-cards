@@ -210,6 +210,17 @@ function progressSteps(increment) {
     main.setAttribute('style', 'margin-top: 1920px;');
 
     setTimeout(() => {
+
+        switch(currentStep+increment) {
+            case 1:
+                break;
+            case 2:
+                updateTotal([columns.essential, columns.desirable], columns.totalTextBox);
+                break;
+            case 3:
+                updateTotal([columns.essential], columns.totalTextBox);
+        }
+
         main.setAttribute('style', '');
         var headerText = document.querySelector('.header > .h1');
         var subtext = document.querySelector('.header > .p');
@@ -238,6 +249,19 @@ function resizeWindow() {
         document.querySelector('.blockwindow img').style.width = '35%';
     }
 };
+
+function assertCardAmount(amount, understring, overstring) {
+    var amountOfCards = (getAmountOfCardsInColumn(columns.essential))
+    if (amountOfCards > amount) {
+        displayError(understring);
+        cooldown = false;
+        return;
+    } else if (amountOfCards < amount) {
+        displayError(overstring);
+        cooldown = false;
+        return;
+    }
+}
 
 // ** Start of page execution **
 
@@ -274,8 +298,9 @@ start.addEventListener('click', function () {
 var nextButton = document.querySelector('#proceed');
 nextButton.addEventListener('click', function () {
     if (cooldown) { return; } else { cooldown = true; }
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0; 
 
     switch (currentStep) {
         case 1:
@@ -283,42 +308,17 @@ nextButton.addEventListener('click', function () {
             activateTotal([columns.essential, columns.desirable]);
             break;
         case 2:
-
-            var amountOfCards = (getAmountOfCardsInColumn(columns.essential) + getAmountOfCardsInColumn(columns.desirable))
-            if (amountOfCards > 25) {
-                displayError('Reduce your choices to only 25 essential & desired values.')
-                cooldown = false;
-                return;
-            } else if (amountOfCards < 25) {
-                displayError('Increase your choices to at least 25 essential & desired values.')
-                cooldown = false;
-                return;
-            }
-
-            updateTotal([columns.essential], columns.totalTextBox);
+            assertCardAmount(25, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.');
             deleteCardsAll([columns.notimportant]);
             break;
         case 3:
-
-            var amountOfCards = (getAmountOfCardsInColumn(columns.essential))
-            if (amountOfCards > 10) {
-                displayError('Reduce your choices to only 10 essential values.')
-                cooldown = false;
-                return;
-            } else if (amountOfCards < 10) {
-                displayError('Increase your choices to at least 10 essential values.')
-                cooldown = false;
-                return;
-            }
-            // Dont need to update totals as next step is rankings
+            assertCardAmount(10, 'Reduce your choices to only 10 essential values.', 'Increase your choices to at least 10 essential values.')
             deleteCardsAll([columns.desirable, columns.notimportant]);
             break;
         case 4:
-            displayError('UNDER DEVELOPMENT, STILL PENDING WORK. Please contact Jordan Benyon.');
-            return;
+            displayError('UNDER DEVELOPMENT, STILL PENDING WORK. Please contact Jordan Benyon.'); return;
             break;
         case 5:
-
             break;
     }
     progressSteps(1);
