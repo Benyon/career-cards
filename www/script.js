@@ -5,7 +5,7 @@ const payload = [
     "[JOB WITH LESS STRESS] You would prefer to have few pressures and uncomfortable demands.",
     "[CREATIVITY/INNOVATION] Thinking up new ideas and ways of doing things is important to you.",
     "[PRESSURE] You like working to tight deadlines and a fast paced environment.",
-    "[PHYSICAL CHALLENGE] bYou enjoy work that is physically demanding.",
+    "[PHYSICAL CHALLENGE] You enjoy work that is physically demanding.",
     "[PRECISE WORK] You like working at things which involve great care and accurate attention to detail.",
     "[ANALYTICAL CONTENT] You enjoy the process of analysing, evaluating and collating information.",
     "[CUSTOMER SERVICE] You enjoy being in an environment where you can look after customers.",
@@ -69,6 +69,7 @@ var cooldown = false;
 var tempCards = [];
 var currentStep = 0;
 var movingCard = null;
+var mute = false;
 
 var columns = {
     get essential() {
@@ -163,6 +164,12 @@ function dragOut(e) {
 }
 
 function drop(e) {
+
+    if (!mute) {
+        var sound = new Audio('./audio/animation-down-3.mp3');
+        sound.play();
+    }
+
     if (e.stopPropagation) {
         e.stopPropagation();
     }
@@ -208,9 +215,14 @@ function activateTotal(cols) {
 function progressSteps(increment) {
     var main = document.querySelector('main');
     main.setAttribute('style', 'margin-top: 1920px;');
+ 
+    if (!mute) {
+        var sound = new Audio('./audio/animation-up-3.mp3');
+        sound.volume = 0.5;
+        sound.play();
+    }
 
     setTimeout(() => {
-
         switch(currentStep+increment) {
             case 1:
                 break;
@@ -280,6 +292,11 @@ placeCards(startingColumn, payload);
 window.onresize = resizeWindow;
 resizeWindow();
 
+sound.addEventListener('click', function() {
+    mute = !mute;
+    soundIcon.src = mute ? 'img/soundoff.png' : 'img/soundon.png';
+})
+
 var cards = document.querySelectorAll('#board .card');
 cards.forEach(function(card) {
     card.addEventListener('dragstart', startDragging, false);
@@ -294,8 +311,8 @@ cols.forEach(function(column) {
     column.addEventListener('drop', drop, false);
 });
 
-var startButton = document.querySelector('#startButton');
-start.addEventListener('click', function () {
+var startButton = document.querySelector('#start');
+startButton.addEventListener('click', function () {
     var introBox = document.querySelector('#introduction');
     introBox.classList.add('hidden');
     introBox.classList.remove('visible');
@@ -320,6 +337,8 @@ nextButton.addEventListener('click', function () {
         case 3:
             if (!assertCardAmount([columns.essential], 10, 'Reduce your choices to only 10 essential values.', 'Increase your choices to at least 10 essential values.')) return;
             deleteCardsAll([columns.desirable, columns.notimportant]);
+
+            // TODO AT THIS POINT, WE NEED TO CHANGE THE BOARD AROUND, HIDE A COLUMN AND SECOND COLUMN NEEDS TO BE THE ORDERED LIST
             break;
         case 4:
             displayError('UNDER DEVELOPMENT, STILL PENDING WORK. Please contact Jordan Benyon.'); return;

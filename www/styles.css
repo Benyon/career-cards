@@ -401,3 +401,17 @@ button {
     color: white;
     text-shadow: 1px 1px 1px #6f4343;
 }
+
+#sound > img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top:10px;
+    left:10px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#sound > img:hover {
+    opacity: 1;
+}
