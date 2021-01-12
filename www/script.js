@@ -295,7 +295,7 @@ nextButton.addEventListener('click', function () {
                 return;
             }
 
-            deleteCardsAll([columns.desirable]);
+            deleteCardsAll([columns.notimportant]);
             break;
         case 3:
 
