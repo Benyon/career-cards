@@ -59,7 +59,9 @@ const payload = [
 var stepsText = [
     ["Values and Needs Exercise - Step 1", "Consider each question carefully and drag the card into the columns below, depending on score."],
     ["Values and Needs Exercise - Step 2", "Challenge your choices and reduce to your top 25 Essential & Desirable values and needs."],
-    ["Values and Needs Exercise - Step 3", "Challenge your choices and reduce to your top 10 Essential values and needs."]
+    ["Values and Needs Exercise - Step 3", "Challenge your choices and reduce to your top 10 Essential values and needs."],
+    ["Values and Needs Exercise - Step 4", "Prioritise your values & needs from 1 to 10."],
+    ["Values and Needs Exercise - Step 5", "Map your top 10 values and needs against your present (or most recent) and up to 3 previous jobs using a 1-4 scoring system"]
 ]
 
 var colours = ["#ffe177", "#ffb476","#ff8b73","#efff98", "#ccff95", "#93ff8f", "#7cfad6", "#c3e4ff", "#75d7ff","#ffe177", "#ffb476","#ff8b73","#efff98"]
@@ -233,6 +235,16 @@ var startingColumn = document.querySelector('#essential .card-list');
 placeCards(startingColumn, payload);
 
 // ** Set up eventListeners **
+
+window.onresize = () => {
+    if (window.innerHeight<900) {
+    document.querySelector('.blockwindow').style.width = '80vw';
+    document.querySelector('.blockwindow img').style.width = '25%';
+    } else { 
+        document.querySelector('.blockwindow').style.width = '50vw';
+        document.querySelector('.blockwindow img').style.width = '35%';
+    }
+};
 
 var cards = document.querySelectorAll('#board .card');
 cards.forEach(function(card) {

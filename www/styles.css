@@ -248,8 +248,9 @@ main {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: width 800ms ease;
 
-    width: 900px;
+    width: 50vw;
     height: auto;
 
     padding: 30px;
@@ -266,6 +267,7 @@ main {
     margin-top: 15px;
     margin-bottom: 30px;
     width: 35%;
+    transition: width 800ms ease;
 }
 
 .h1 {
