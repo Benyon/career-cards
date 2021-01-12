@@ -295,8 +295,8 @@ nextButton.addEventListener('click', function () {
                 return;
             }
 
-            deleteCardsAll([columns.notimportant]);
             updateTotal([columns.essential], columns.totalTextBox);
+            deleteCardsAll([columns.notimportant]);
             break;
         case 3:
 
@@ -310,11 +310,12 @@ nextButton.addEventListener('click', function () {
                 cooldown = false;
                 return;
             }
-
+            // Dont need to update totals as next step is rankings
             deleteCardsAll([columns.desirable, columns.notimportant]);
             break;
         case 4:
-            displayError('UNDER DEVELOPMENT, STILL PENDING WORK. Please contact Jordan Benyon.')
+            displayError('UNDER DEVELOPMENT, STILL PENDING WORK. Please contact Jordan Benyon.');
+            return;
             break;
         case 5:
 
