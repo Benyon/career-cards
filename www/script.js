@@ -253,8 +253,11 @@ function resizeWindow() {
     }
 };
 
-function assertCardAmount(amount, understring, overstring) {
-    var amountOfCards = (getAmountOfCardsInColumn(columns.essential))
+function assertCardAmount(cols ,amount, understring, overstring) {
+    var amountOfCards = 0;
+    cols.forEach((col) => { 
+        amountOfCards = amountOfCards + getAmountOfCardsInColumn(col);
+    });
     if (amountOfCards > amount) {
         displayError(understring);
         cooldown = false;
@@ -311,11 +314,11 @@ nextButton.addEventListener('click', function () {
             activateTotal([columns.essential, columns.desirable]);
             break;
         case 2:
-            if (!assertCardAmount(25, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.')) return;
+            if (!assertCardAmount([columns.essential, columns.desirable], 5, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.')) return;
             deleteCardsAll([columns.notimportant]);
             break;
         case 3:
-            if (!assertCardAmount(10, 'Reduce your choices to only 10 essential values.', 'Increase your choices to at least 10 essential values.')) return;
+            if (!assertCardAmount([columns.essential], 10, 'Reduce your choices to only 10 essential values.', 'Increase your choices to at least 10 essential values.')) return;
             deleteCardsAll([columns.desirable, columns.notimportant]);
             break;
         case 4:
