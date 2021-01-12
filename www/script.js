@@ -90,9 +90,11 @@ payload.forEach(function (card) {
     var node = document.createElement('li');
     node.setAttribute('draggable', 'true');
     node.setAttribute('class', 'card');
-    node.innerHTML = card.replace('[', '</strong>').replace('] ','<strong><br>').
+    node.innerHTML = card.replace('[', '</strong>').replace('] ','<strong><br>');
     startingColumn.appendChild(node);
 });
+
+// ** Set up eventListeners **
 
 var cards = document.querySelectorAll('#board .card');
 cards.forEach(function(card) {
