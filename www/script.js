@@ -215,12 +215,12 @@ function progressSteps(increment) {
             case 1:
                 break;
             case 2:
-                columns.notimportant.style = 'background-color: #e3e3e3;';
+                columns.notimportant.parentNode.style = 'background-color: #e3e3e3;';
                 updateTotal([columns.essential, columns.desirable], columns.totalTextBox);
                 break;
             case 3:
-                columns.notimportant.style = 'background-color: #e3e3e3;';
-                columns.desirable.style = 'background-color: #e3e3e3;';
+                columns.notimportant.parentNode.style = 'background-color: #e3e3e3;';
+                columns.desirable.parentNode.style = 'background-color: #e3e3e3;';
                 updateTotal([columns.essential], columns.totalTextBox);
         }
 
