@@ -229,15 +229,8 @@ function displayError(string) {
     }, 2200);
 }
 
-// ** Start of page execution **
-
-var startingColumn = document.querySelector('#essential .card-list');
-placeCards(startingColumn, payload);
-
-// ** Set up eventListeners **
-
-window.onresize = () => {
-    if (window.innerHeight<900) {
+function resizeWindow() {
+    if (window.innerHeight<950) {
     document.querySelector('.blockwindow').style.width = '80vw';
     document.querySelector('.blockwindow img').style.width = '25%';
     } else { 
@@ -245,6 +238,15 @@ window.onresize = () => {
         document.querySelector('.blockwindow img').style.width = '35%';
     }
 };
+
+// ** Start of page execution **
+
+var startingColumn = document.querySelector('#essential .card-list');
+placeCards(startingColumn, payload);
+
+// ** Set up eventListeners **
+
+window.onresize = resizeWindow;
 
 var cards = document.querySelectorAll('#board .card');
 cards.forEach(function(card) {

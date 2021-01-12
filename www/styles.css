@@ -248,7 +248,7 @@ main {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    transition: width 800ms ease;
+    transition: width 200ms ease;
 
     width: 50vw;
     height: auto;
