@@ -1,10 +1,10 @@
 // ** Start of Variables **
 
 const payload = [
-    "*INDEPENDENCE / AUTONOMY**_You like being able to determine the way you work without significant direction or involvement from others",
-    "*DEVELOPING OTHERS**_You enjoy training, teaching, mentoring or coaching others and seeing them develop",
-    "*JOB WITH LESS STRESS**_You would prefer to have few pressures and uncomfortable demands",
-    "*CUSTOMER SERVICE**_You enjoy being in an environment where you can look after customers"
+    "[INDEPENDENCE / AUTONOMY] You like being able to determine the way you work without significant direction or involvement from others",
+    "[DEVELOPING OTHERS] You enjoy training, teaching, mentoring or coaching others and seeing them develop",
+    "[JOB WITH LESS STRESS] You would prefer to have few pressures and uncomfortable demands",
+    "[CUSTOMER SERVICE] You enjoy being in an environment where you can look after customers"
 ];
 
 var movingCard = null;
@@ -90,7 +90,7 @@ payload.forEach(function (card) {
     var node = document.createElement('li');
     node.setAttribute('draggable', 'true');
     node.setAttribute('class', 'card');
-    node.innerHTML = card.replace('**', '</strong>').replace('*','<strong>').replace('_', '<br>');
+    node.innerHTML = card.replace('[', '</strong>').replace('] ','<strong><br>').
     startingColumn.appendChild(node);
 });
 
