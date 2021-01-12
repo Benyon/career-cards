@@ -32,8 +32,8 @@ body, html {
 main {
     height: 100%;
     margin: 50px;
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 100px;
+    margin-right: 100px;
     border: solid 1px #999;
     border-radius: 15px;
     overflow: hidden;
@@ -236,7 +236,7 @@ main {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5); 
-    z-index: 2;
+    z-index: 4;
     cursor: pointer;
 }
 
@@ -342,6 +342,7 @@ button {
 }
 
 .interactive-footer {
+    transition: margin-top 1600ms;
     display: block;
     margin: auto;
     background-color: #fff;
@@ -369,4 +370,29 @@ button {
 .counter {
     display: block;
     float: right;
+}
+
+.error {
+    margin: auto;
+    display: block;
+}
+
+.errorfooter {
+    position: fixed; 
+    display: flex;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    transition: bottom 300ms
+}
+
+.error > p {
+    padding: 5px 20px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid red;
+    border-radius: 8px;
+    background-color: rgba(212, 143, 143, 0.719);
 }

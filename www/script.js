@@ -80,7 +80,14 @@ var columns = {
     },
     get totalTextBox() {
         return document.querySelector('div.interactive-footer > .h2')
+    },
+    get errorfooter() {
+        return document.querySelector('.errorfooter');
+    },
+    get err() {
+        return document.querySelector('.errorfooter > .error > p');
     }
+
 }
 
 // ** Start of functions ** 
@@ -211,6 +218,15 @@ function progressSteps(increment) {
     }, 450);
 }
 
+function displayError(string) {
+    columns.err.innerText = string;
+    columns.errorfooter.setAttribute('style', 'bottom: 80px;')
+
+    setTimeout(() => {
+        columns.errorfooter.setAttribute('style', 'bottom: -50px;')
+    }, 2200);
+}
+
 // ** Start of page execution **
 
 var startingColumn = document.querySelector('#essential .card-list');
@@ -243,6 +259,8 @@ start.addEventListener('click', function () {
 var nextButton = document.querySelector('#proceed');
 nextButton.addEventListener('click', function () {
     if (cooldown) { return; } else { cooldown = true; }
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     switch (currentStep) {
         case 1:
@@ -250,13 +268,37 @@ nextButton.addEventListener('click', function () {
             activateTotal([columns.essential, columns.desirable]);
             break;
         case 2:
+
+            var amountOfCards = (getAmountOfCardsInColumn(columns.essential) + getAmountOfCardsInColumn(columns.desirable))
+            if (amountOfCards > 25) {
+                displayError('Reduce your choices to only 25 essential & desired values.')
+                cooldown = false;
+                return;
+            } else if (amountOfCards < 25) {
+                displayError('Increase your choices to at least 25 essential & desired values.')
+                cooldown = false;
+                return;
+            }
+
             deleteCardsAll([columns.desirable, columns.notimportant]);
             break;
         case 3:
+
+            var amountOfCards = (getAmountOfCardsInColumn(columns.essential))
+            if (amountOfCards > 10) {
+                displayError('Reduce your choices to only 10 essential values.')
+                cooldown = false;
+                return;
+            } else if (amountOfCards < 10) {
+                displayError('Increase your choices to at least 10 essential values.')
+                cooldown = false;
+                return;
+            }
+
             deleteCardsAll([columns.desirable, columns.notimportant]);
             break;
         case 4:
-
+            displayError('UNDER DEVELOPMENT, STILL PENDING WORK. Please contact Jordan Benyon.')
             break;
         case 5:
 
