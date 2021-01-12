@@ -215,9 +215,12 @@ function progressSteps(increment) {
             case 1:
                 break;
             case 2:
+                columns.notimportant.style = 'background-color: #e3e3e3;';
                 updateTotal([columns.essential, columns.desirable], columns.totalTextBox);
                 break;
             case 3:
+                columns.notimportant.style = 'background-color: #e3e3e3;';
+                columns.desirable.style = 'background-color: #e3e3e3;';
                 updateTotal([columns.essential], columns.totalTextBox);
         }
 
@@ -255,12 +258,13 @@ function assertCardAmount(amount, understring, overstring) {
     if (amountOfCards > amount) {
         displayError(understring);
         cooldown = false;
-        return;
+        return false;
     } else if (amountOfCards < amount) {
         displayError(overstring);
         cooldown = false;
-        return;
+        return false;
     }
+    return true;
 }
 
 // ** Start of page execution **
@@ -304,15 +308,14 @@ nextButton.addEventListener('click', function () {
 
     switch (currentStep) {
         case 1:
-            deleteCards(columns.notimportant);
             activateTotal([columns.essential, columns.desirable]);
             break;
         case 2:
-            assertCardAmount(25, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.');
+            if (!assertCardAmount(25, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.')) return;
             deleteCardsAll([columns.notimportant]);
             break;
         case 3:
-            assertCardAmount(10, 'Reduce your choices to only 10 essential values.', 'Increase your choices to at least 10 essential values.')
+            if (!assertCardAmount(10, 'Reduce your choices to only 10 essential values.', 'Increase your choices to at least 10 essential values.')) return;
             deleteCardsAll([columns.desirable, columns.notimportant]);
             break;
         case 4:
