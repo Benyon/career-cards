@@ -5,45 +5,81 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet"> 
         <title>Career Cards</title>
     </head>
     <body>
         <main>
             <div class='header'>
-                <strong>The Importance of Values & Needs – What is important to you in your Career and Life + WHY?</strong>
-                <br> We all have a set of values; they are the things we believe in and hold dear.  They often change over time as a result of situations that affect and shape your life but we rarely audit or even consider them.
-                <br> We also have needs.  These are things that we must have in order to feel motivated and they contribute to our sense of wellbeing.  Why do you want to work? What makes you get out of bed each day?
-                <br> Without understanding your values and needs it is almost impossible to find real meaning and fulfilment, which is fundamental when it comes to finding the right job or type of work for you.
-                <br><br>
-                <strong>Instructions</strong> <br> Against statements 1-55 study these values and needs very carefully and decide which category each value or need fits into i.e.  ‘Essential’ (E), ‘Desirable’ (D) and ‘Not Important’ (N) and put the corresponding letter against each question in the answer box 
+                <span class='h1 p-5'>Values and Needs Exercise - Step 1</span>
+                <span class='p none-aligned'>Consider each question carefully and drag the card into the columns below, depending on score.</span>
             </div>
             <div id="board">
-                <div class="column">
+                <div id="essential" class="column">
+                    <ul class="card-header"><span class='h1'>Essential</span></ul>
                     <ul class="card-list">
                     </ul>
                 </div>
-                <div class="column">
+                <div id="desirable" class="column">
+                    <ul class="card-header"><span class='h1'>Desirable</span></ul>
                     <ul class="card-list">
                     </ul>
                 </div>
-                <div class="column">
+                <div id="notimportant" class="column">
+                    <ul class="card-header"><span class='h1'>Not Important</span></ul>
                     <ul class="card-list">
                     </ul>
                 </div>
             </div>
-            <div id="introduction" class="overlay">
+            <div id="introduction" class="overlay visible">
                 <div class="blockwindow">
                     <img src='img/banner.png'> 
-                    <strong>The Importance of Values & Needs – What is important to you in your Career and Life + WHY?</strong>
-                    <br> We all have a set of values; they are the things we believe in and hold dear.  They often change over time as a result of situations that affect and shape your life but we rarely audit or even consider them.
-                    <br> We also have needs.  These are things that we must have in order to feel motivated and they contribute to our sense of wellbeing.  Why do you want to work? What makes you get out of bed each day?
-                    <br> Without understanding your values and needs it is almost impossible to find real meaning and fulfilment, which is fundamental when it comes to finding the right job or type of work for you.
-                    <br><br>
-                    <strong>Instructions</strong> <br> Against statements 1-55 study these values and needs very carefully and decide which category each value or need fits into i.e.  ‘Essential’ (E), ‘Desirable’ (D) and ‘Not Important’ (N) and put the corresponding letter against each question in the answer box 
-    
+                    <span class='h1'>The Importance of Values & Needs – What is important to you in your Career and Life + WHY?</span> 
+                    <span class='p'>We all have a set of values; they are the things we believe in and hold dear.  They often change over time as a result of situations that affect and shape your life but we rarely audit or even consider them.</span>
+                    <span class='p'>We also have needs.  These are things that we must have in order to feel motivated and they contribute to our sense of wellbeing.  Why do you want to work? What makes you get out of bed each day?</span>
+                    <span class='p'>Without understanding your values and needs it is almost impossible to find real meaning and fulfilment, which is fundamental when it comes to finding the right job or type of work for you.</span>
+                    <span class='steps table'>
+                        <div class='row'>
+                            <div class='cell stepcell'>Step 1</div>
+                            <div class='cell'>Against statements 1-55 study these values and needs very carefully and decide which category each value or need fits into i.e.  ‘Essential’, ‘Desirable’ and ‘Not Important’ and put the corresponding letter against each question in the answer box </div>
+                        </div>                        
+                        <div class='row'>
+                            <div class='cell stepcell'></div>
+                            <div class='cell'>Having categorised each statement, revisit, double check you agree or make changes to your original selection using the relevant category, then click ‘done’</div>
+                        </div>
+                        <div class='row'>
+                            <div class='cell stepcell'>Step 2</div>
+                            <div class='cell'>Challenge your choices and reduce down to your top 25 values and needs taking account of all your Essential and Desirable graded selections then click ‘done’</div>
+                        </div>
+                        <div class='row'>
+                            <div class='cell stepcell'>Step 3</div>
+                            <div class='cell'>Carefully review your top 25 selections and reduce them to your top 10 Essentials only, then click ‘done’</div>
+                        </div>
+
+                        <div class='row'>
+                            <div class='cell stepcell'>Step 4</div>
+                            <div class='cell'>Prioritise your top 10 and record in order on the page  then click ‘done’ to move to the next stage</div>
+                        </div>
+
+                        <div class='row'>
+                            <div class='cell stepcell'>Step 5</div>
+                            <div class='cell'>Map your top 10 values and needs against your present (or most recent) and up to 3 previous jobs using a 1-4 scoring system where <strong>4 = Excellent match</strong> to needs, <strong>3 = Meets my needs</strong>, <strong>2 = Partly meets my needs</strong>, <strong>1 = Some or no meeting</strong> of my needs</div>
+                        </div>
+                    </span>
+                    <span class='p'>When you are ready to start the exercise, click "Start" at the top or bottom of the screen to go to the first step.</span>
+                    <span class='p subtle'>If you require coaching support to help you with this exercise, Contact Steve <a target='_blank' href='http://www.steveprestonthecareercatalyst.com'>http://www.steveprestonthecareercatalyst.com</a></span>
+                    <button id='start'>Start</button>
+                    <span class='p subtle'>All rights reserved. No part of this exercise can be reproduced, reworded, or transmitted in any form or by any means electrical, mechanical, photocopied, recorded or otherwise without prior permission of Steve Preston The Career Catalyst.</span>
                 </div>
             </div>
         </main>
+        <div class='footer'>
+            <div class='interactive-footer'>
+                <div class='h2' style='display: none!important;'>Total: 25</div>
+                <button id='proceed'>Next</button>
+            </div>
+        </div>
     </body>
     <script type="text/javascript" src='script.js'></script>
 </html>
