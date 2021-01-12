@@ -247,6 +247,7 @@ placeCards(startingColumn, payload);
 // ** Set up eventListeners **
 
 window.onresize = resizeWindow;
+resizeWindow();
 
 var cards = document.querySelectorAll('#board .card');
 cards.forEach(function(card) {
