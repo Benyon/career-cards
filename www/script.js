@@ -314,7 +314,7 @@ nextButton.addEventListener('click', function () {
             activateTotal([columns.essential, columns.desirable]);
             break;
         case 2:
-            if (!assertCardAmount([columns.essential, columns.desirable], 5, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.')) return;
+            if (!assertCardAmount([columns.essential, columns.desirable], 25, 'Reduce your choices to only 25 essential & desired values.', 'Increase your choices to at least 25 essential & desired values.')) return;
             deleteCardsAll([columns.notimportant]);
             break;
         case 3:
